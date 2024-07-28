@@ -9,7 +9,7 @@ function App() {
       <h1>Ooops!!</h1>
       <div className="card">
         <h2>
-          <code>Site still under development</code>
+          <code>Site under development</code>
         </h2>
       </div>
       <div>
