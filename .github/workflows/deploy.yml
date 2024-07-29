@@ -19,8 +19,10 @@ jobs:
         with:
           node-version: 20  # Specified Node.js version 20
 
+      # - name: Install dependencies
+      #   run: npm install  # Directly run npm install
       - name: Install dependencies
-        run: npm install  # Directly run npm install
+        uses: bahmutov/npm-install@v1
 
       - name: Build project
         run: npm run build
