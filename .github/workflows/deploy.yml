@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4  # Updated to v4, latest - v4.1.7
+        uses: actions/checkout@v4.1.7  # Updated to v4, latest - v4.1.7
 
       - name: Setup Node
-        uses: actions/setup-node@v4  # Updated to v4, latest - v4.0.3
+        uses: actions/setup-node@v4.0.3  # Updated to v4, latest - v4.0.3
         with:
           node-version: 20  # Specified Node.js version 20
 
@@ -28,7 +28,7 @@ jobs:
         run: npm run build
 
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v4  # Updated to v4, latest - v4.3.4
+        uses: actions/upload-artifact@v4.3.4  # Updated to v4, latest - v4.3.4
         with:
           name: production-files
           path: ./dist
@@ -48,13 +48,13 @@ jobs:
 
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v4  # Updated to v4, latest - v4.1.8
+        uses: actions/download-artifact@v4.1.8  # Updated to v4, latest - v4.1.8
         with:
           name: production-files
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4  # Updated to v4, latest - v4.0.5
+        uses: actions/deploy-pages@v4.0.5  # Updated to v4, latest - v4.0.5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # publish_dir: ./dist
