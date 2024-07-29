@@ -19,10 +19,10 @@ jobs:
         with:
           node-version: 20  # Specified Node.js version 20
 
-      # - name: Install dependencies
-      #   run: npm install  # Directly run npm install
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm install  # Directly run npm install
+      # - name: Install dependencies
+      #   uses: bahmutov/npm-install@v1
 
       - name: Build project
         run: npm run build
@@ -47,7 +47,7 @@ jobs:
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3  # Updated to v4, latest - v4.0.5
+        uses: actions/deploy-pages@v4  # Updated to v4, latest - v4.0.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # publish_dir: ./dist
