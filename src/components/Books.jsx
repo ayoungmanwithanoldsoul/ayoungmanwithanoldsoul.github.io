@@ -164,7 +164,7 @@ export const Books = () => {
                   responsive={responsive} 
                   infinite={true} 
                   className="books-carousel" 
-                  swipeable={true} 
+                  swipeable={true}  
                   draggable={true}
                   showDots={false}
                 >
