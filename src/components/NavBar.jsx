@@ -51,9 +51,9 @@ export const NavBar = () => {
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
-                <a href="#"><img src={navIcon1} alt="" /></a>
-                <a href="#"><img src={navIcon2} alt="" /></a>
-                <a href="#"><img src={navIcon3} alt="" /></a>
+                <a href="https://www.linkedin.com/in/paolo-andrew-3b276428a/" target="_blank"><img src={navIcon1} alt="" /></a>
+                <a href="https://www.facebook.com/ayoungmanwithanoldsoul/" target="_blank"><img src={navIcon2} alt="" /></a>
+                <a href="https://www.instagram.com/ayoungmanwithanoldsoul/" target="_blank"><img src={navIcon3} alt="" /></a>
               </div>
               <HashLink to='#connect'>
                 <button className="vvd"><span>Let’s Connect</span></button>

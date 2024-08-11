@@ -1,16 +1,33 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
+import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import arrow1 from "../assets/img/arrow1.svg";
-import arrow2 from "../assets/img/arrow2.svg";
-import colorSharp from "../assets/img/color-sharp.png"
+import colorSharp from "../assets/img/color-sharp.png";
+import CircularProgressBar from './mini/CircularProgressBar'; // Import the new component
 
 export const Skills = () => {
+  const skills = [
+    { percentage: 90, title: "React" },
+    { percentage: 85, title: "JavaScript" },
+    { percentage: 80, title: "Java" },
+    { percentage: 90, title: "PHP" },
+    { percentage: 92, title: "Laravel" },
+    { percentage: 94, title: "SQL" },
+    { percentage: 80, title: "Bootstrap" },
+    { percentage: 96, title: "Communication" },
+    { percentage: 90, title: "Leadership" },
+    { percentage: 93, title: "Problem-Solving" },
+    { percentage: 80, title: "Project Management" },
+    { percentage: 96, title: "Collaboration" },
+    { percentage: 89, title: "Adaptability" },
+    { percentage: 90, title: "Client Relations" },
+    { percentage: 85, title: "Time Management" },
+    { percentage: 90, title: "Professional Writing" },
+    { percentage: 70, title: "Data Analysis" },
+    { percentage: 90, title: "Presentation Skills" }
+  ];
+
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5
     },
@@ -30,35 +47,22 @@ export const Skills = () => {
 
   return (
     <section className="skill" id="skills">
-        <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <div className="skill-bx wow zoomIn">
-                        <h2>Skills</h2>
-                        <p>Skills learned through experience, continuous learning, and a passion for innovation.</p>
-                        <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter2} alt="Image" />
-                                <h5>Brand Identity</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter3} alt="Image" />
-                                <h5>Logo Design</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                        </Carousel>
-                    </div>
-                </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <div className="skill-bx wow zoomIn">
+              <h2>Skills</h2>
+              <p>Skills learned through experience, continuous learning, and a passion for innovation.</p>
+              <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
+                {skills.map((skill, index) => (
+                  <CircularProgressBar key={index} percentage={skill.percentage} title={skill.title} />
+                ))}
+              </Carousel>
             </div>
+          </div>
         </div>
-        <img className="background-image-left" src={colorSharp} alt="Image" />
+      </div>
+      <img className="background-image-left" src={colorSharp} alt="Background" />
     </section>
-  )
-}
+  );
+};

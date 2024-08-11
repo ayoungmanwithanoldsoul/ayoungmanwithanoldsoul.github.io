@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import emailjs from '@emailjs/browser'; // Import EmailJS
+// import './Contact.css'; // Add a CSS file for custom styles if needed
 
 export const Contact = () => {
   const formInitialDetails = {
@@ -51,6 +52,16 @@ export const Contact = () => {
     });
   };
 
+  useEffect(() => {
+    if (status.message) {
+      const timer = setTimeout(() => {
+        setStatus({});
+      }, 3000); // Disappears after 3 seconds
+
+      return () => clearTimeout(timer); // Cleanup the timer on unmount
+    }
+  }, [status]);
+
   return (
     <section className="contact" id="connect">
       <Container>
@@ -90,8 +101,10 @@ export const Contact = () => {
                     </Col>
                     {
                       status.message &&
-                      <Col>
-                        <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
+                      <Col size={12}>
+                        <div className={`alert ${status.success === false ? "alert-danger" : "alert-success"} animate__animated animate__fadeInUp`}>
+                          {status.message}
+                        </div>
                       </Col>
                     }
                   </Row>
