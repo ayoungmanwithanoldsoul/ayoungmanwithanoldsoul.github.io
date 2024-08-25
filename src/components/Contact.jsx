@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/le-petit-prince-contact.svg";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import emailjs from '@emailjs/browser'; 
+import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
   const formInitialDetails = {
@@ -11,60 +11,30 @@ export const Contact = () => {
     lastName: '',
     email: '',
     phone: '',
-    message: '',
-    browser: '',
-    os: '',
-    ip: '',
+    message: ''
   };
 
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttonText, setButtonText] = useState('Send');
   const [status, setStatus] = useState({});
+  const [ipAddress, setIpAddress] = useState(''); // State to store the IP address
+  const [browserInfo, setBrowserInfo] = useState(''); // State to store the browser info
+  const [osInfo, setOsInfo] = useState(''); // State to store the OS info
 
-  // Fetch user's IP address
   useEffect(() => {
+    // Fetch the IP address using the ipify API
     fetch('https://api64.ipify.org?format=json')
       .then(response => response.json())
-      .then(data => setFormDetails(prevData => ({ ...prevData, ip: data.ip })))
-      .catch(error => console.error('Error fetching IP address:', error));
-  }, []);
+      .then(data => setIpAddress(data.ip))
+      .catch(error => console.error('Failed to fetch IP address:', error));
 
-  // Get browser and OS details
-  const getBrowserAndOS = () => {
-    const userAgent = navigator.userAgent;
-    let browser, os;
+    // Detect browser and OS
+    const userAgent = window.navigator.userAgent;
+    const browser = window.navigator.vendor || window.navigator.userAgent;
+    const os = window.navigator.platform;
 
-    if (userAgent.indexOf("Firefox") > -1) {
-      browser = "Firefox";
-    } else if (userAgent.indexOf("SamsungBrowser") > -1) {
-      browser = "Samsung Internet";
-    } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
-      browser = "Opera";
-    } else if (userAgent.indexOf("Trident") > -1) {
-      browser = "Internet Explorer";
-    } else if (userAgent.indexOf("Edge") > -1) {
-      browser = "Microsoft Edge";
-    } else if (userAgent.indexOf("Chrome") > -1) {
-      browser = "Chrome";
-    } else if (userAgent.indexOf("Safari") > -1) {
-      browser = "Safari";
-    } else {
-      browser = "Unknown Browser";
-    }
-
-    if (userAgent.indexOf("Win") !== -1) os = "Windows OS";
-    else if (userAgent.indexOf("Mac") !== -1) os = "Macintosh";
-    else if (userAgent.indexOf("Linux") !== -1) os = "Linux OS";
-    else if (userAgent.indexOf("Android") !== -1) os = "Android OS";
-    else if (userAgent.indexOf("like Mac") !== -1) os = "iOS";
-    else os = "Unknown OS";
-
-    return { browser, os };
-  };
-
-  useEffect(() => {
-    const { browser, os } = getBrowserAndOS();
-    setFormDetails(prevData => ({ ...prevData, browser, os }));
+    setBrowserInfo(browser);
+    setOsInfo(os);
   }, []);
 
   const onFormUpdate = (category, value) => {
@@ -78,18 +48,31 @@ export const Contact = () => {
     e.preventDefault();
     setButtonText("Sending...");
 
-    emailjs.sendForm(
-      import.meta.env.VITE_APP_SERVICE_ID,
-      import.meta.env.VITE_APP_TEMPLATE_ID,
-      e.target,
-      import.meta.env.VITE_APP_PUBLIC_KEY
+    // Prepare the template parameters
+    const templateParams = {
+      ...formDetails,
+      ip: ipAddress,
+      browser: browserInfo,
+      os: osInfo
+    };
+
+    // Log all the details to the console
+    console.log("Form Details:", templateParams);
+
+    emailjs.send(
+      import.meta.env.VITE_APP_SERVICE_ID,  // Correct environment variable usage
+      import.meta.env.VITE_APP_TEMPLATE_ID, // Correct environment variable usage
+      templateParams,                       // Include IP, browser, and OS info
+      import.meta.env.VITE_APP_PUBLIC_KEY   // Your EmailJS user ID
     )
       .then((result) => {
+        console.log("Email sent successfully:", result.text);
         setStatus({ success: true, message: 'Message sent successfully' });
         setFormDetails(formInitialDetails);
         setButtonText("Send");
       })
       .catch((error) => {
+        console.error('Failed to send email:', error);
         setStatus({ success: false, message: 'Failed to send message. Please try again later.' });
         setButtonText("Send");
       });
@@ -99,9 +82,9 @@ export const Contact = () => {
     if (status.message) {
       const timer = setTimeout(() => {
         setStatus({});
-      }, 3000);
+      }, 3000); // Disappears after 3 seconds
 
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer); // Cleanup the timer on unmount
     }
   }, [status]);
 
