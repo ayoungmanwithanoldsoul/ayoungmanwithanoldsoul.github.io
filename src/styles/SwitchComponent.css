@@ -1,0 +1,132 @@
+.theme-switch {
+    display: inline-flex;
+    align-items: center;
+    position: fixed; /* Use fixed positioning to keep it floating relative to the viewport */
+    bottom: 20px; /* Distance from the bottom of the viewport */
+    right: 20px; /* Distance from the right of the viewport */
+    z-index: 1000; /* Ensures the switch is above other elements */
+    cursor: pointer;
+  }
+  
+  .theme-switch__checkbox {
+    display: none;
+  }
+  
+  .theme-switch__container {
+    width: 60px;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 34px;
+    position: relative;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for floating effect */
+  }
+  
+  .theme-switch__container.night-mode {
+    background-color: #333;
+  }
+  
+  .theme-switch__container .theme-switch__circle-container {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.3s;
+  }
+  
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
+    transform: translateX(26px);
+  }
+  
+  .theme-switch__clouds {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    width: 40px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .theme-switch__stars-container {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+  }
+  
+  .theme-switch__circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fdd;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    z-index: 0;
+  }
+  
+  .theme-switch__craters .theme-switch__crater {
+    position: absolute;
+    background: #eee;
+    border-radius: 50%;
+  }
+  
+  .theme-switch__crater:nth-of-type(1) {
+    width: 8px;
+    height: 8px;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .theme-switch__crater:nth-of-type(2) {
+    width: 6px;
+    height: 6px;
+    top: 35px;
+    left: 35px;
+  }
+  
+  .theme-switch__rays {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 80px;
+    height: 80px;
+    z-index: 1;
+  }
+  
+  .theme-switch__ray {
+    position: absolute;
+    background: #fff;
+    border-radius: 2px;
+    width: 2px;
+    height: 20px;
+  }
+  
+  .theme-switch__ray:nth-of-type(1) {
+    top: 0;
+    left: 50%;
+    transform: rotate(45deg);
+  }
+  
+  .theme-switch__ray:nth-of-type(2) {
+    top: 0;
+    left: 50%;
+    transform: rotate(90deg);
+  }
+  
+  .theme-switch__ray:nth-of-type(3) {
+    top: 0;
+    left: 50%;
+    transform: rotate(135deg);
+  }
+  
+  .theme-switch__ray:nth-of-type(4) {
+    top: 0;
+    left: 50%;
+    transform: rotate(180deg);
+  }
+  

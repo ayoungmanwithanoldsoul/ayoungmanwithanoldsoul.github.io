@@ -7,6 +7,7 @@ import { Projects } from "./components/Projects";
 import { Books } from "./components/Books";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import SwitchComponent from "./components/SwitchComponent";
 import CursorComponent from './components/utils/CursorComponent';
 import emailjs from '@emailjs/browser';
 
@@ -23,6 +24,7 @@ function App() {
       <Books />
       <Contact />
       <Footer />
+      <SwitchComponent />
     </div>
   );
 }

@@ -336,6 +336,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   color: #973588;
 }
 
+.header-container {
+  margin:20px 0px 20px 0px;
+  padding: 20px 0px 20px 0px;;
+}
+
 /************ Skills Css ************/
 .skill {
   padding: 0 0 50px 0;
