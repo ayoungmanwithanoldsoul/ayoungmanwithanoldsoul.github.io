@@ -56,3 +56,8 @@
     background: transparent;
     /* make scrollbar transparent */
 }
+
+.books-carousel {
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+}
