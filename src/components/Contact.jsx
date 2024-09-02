@@ -103,7 +103,7 @@ export const Contact = () => {
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                  <h2>Get In Touch</h2>
+                  <h2>✉️ Get In Touch</h2>
                   <p>
                     Feel free to reach out if you want to build something together, have a question, or just want to say hello.
                   </p>

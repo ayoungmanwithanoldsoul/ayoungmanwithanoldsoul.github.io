@@ -4,6 +4,7 @@ import headerImg from "../assets/img/le-petit-prince.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import '../styles/Banner.css'
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -68,9 +69,9 @@ export const Banner = () => {
             </TrackVisibility>
           </Col>
           <Col xs={13} md={5} xl={4}>
-                <div className="header-container">
-                  <img src={headerImg} alt="Header Img" />
-                </div>
+            <div className="header-container">
+              <img src={headerImg} alt="Header Img" />
+            </div>
           </Col>
         </Row>
       </Container>

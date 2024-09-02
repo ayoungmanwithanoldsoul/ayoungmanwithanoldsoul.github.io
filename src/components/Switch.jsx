@@ -1,11 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { useTheme } from "./utils/ThemeProvider";
 
 const Switch = () => {
+  const { theme, toggleTheme } = useTheme(); // Use the theme context
   return (
     <StyledWrapper>
       <label className="theme-switch">
-        <input type="checkbox" className="theme-switch__checkbox" />
+        <input
+          type="checkbox"
+          className="theme-switch__checkbox"
+          checked={theme.variant === "dark"} // Set checkbox state based on current theme
+          onChange={toggleTheme} // Toggle theme on change
+        />
         <div className="theme-switch__container">
           <div className="theme-switch__clouds" />
           <div className="theme-switch__stars-container">

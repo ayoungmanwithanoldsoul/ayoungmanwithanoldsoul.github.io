@@ -53,11 +53,11 @@ export const Skills = () => {
             <div className="skill-bx wow zoomIn">
               <h2>Skills</h2>
               <p>Skills learned through experience, continuous learning, and a passion for innovation.</p>
-              <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
+              {/* <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                 {skills.map((skill, index) => (
                   <CircularProgressBar key={index} percentage={skill.percentage} title={skill.title} />
                 ))}
-              </Carousel>
+              </Carousel> */}
             </div>
           </div>
         </div>
