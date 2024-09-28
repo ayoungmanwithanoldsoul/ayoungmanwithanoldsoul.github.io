@@ -62,7 +62,7 @@ export const Music = () => {
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"
                       ></iframe> */}
-                      <CustomIframe src="https://open.spotify.com/embed/playlist/26TGFePCib8AoeNZit6HMz?utm_source=generator" />
+                      <CustomIframe src="https://open.spotify.com/embed/playlist/0l0gQT71wYkEltJTovN7FY?utm_source=generator" />
                     </div>
                   </div>
                 </div>
